@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fast Food Protein Clock</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 30px; background: #f9f9f9; }
+        h1 { margin-bottom: 40px; }
+
+        .clock {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 40px;
+            border: 5px solid #333;
+            border-radius: 50%;
+        }
+
+        .logo-button {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            transform: translate(-50%, -50%);
+            border: none;
+            background: none;
+            padding: 0;
+        }
+
+        .logo-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .chilis     { top: 10%;  left: 50%; }   /* 12 o'clock */
+        .wendys     { top: 50%;  left: 90%; }   /* 3 o'clock */
+        .popeyes    { top: 90%;  left: 50%; }   /* 6 o'clock */
+        .mcdonalds  { top: 50%;  left: 10%; }   /* 9 o'clock */
+
+        table { margin: 0 auto; margin-top: 20px; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ccc; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Top Protein-to-Calorie Fast Food Items</h1>
+
+    <div class="clock">
+        <form method="POST">
+            <button type="submit" name="chain" value="Chili's" class="logo-button chilis">
+                <img src="{{ url_for('static', filename='chilis.png') }}" alt="Chili's">
+            </button>
+            <button type="submit" name="chain" value="Wendy's" class="logo-button wendys">
+                <img src="{{ url_for('static', filename='wendys.png') }}" alt="Wendy's">
+            </button>
+            <button type="submit" name="chain" value="Popeyes" class="logo-button popeyes">
+                <img src="{{ url_for('static', filename='popeyes.png') }}" alt="Popeyes">
+            </button>
+            <button type="submit" name="chain" value="McDonald's" class="logo-button mcdonalds">
+                <img src="{{ url_for('static', filename='mcdonalds.png') }}" alt="McDonald's">
+            </button>
+        </form>
+    </div>
+
+    {% if name %}
+        <h2>{{ name }} Top 5</h2>
+        {{ table|safe }}
+    {% endif %}
+</body>
+</html>
